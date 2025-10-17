@@ -1,0 +1,10 @@
+POST endpoint - https://api.groq.com/openai/v1/audio/translations
+Model - whisper-large-v3
+temperature = 0
+
+{
+    "text": " This is part of testleaf assignment week 2 where I am supposed to input an audio file and verify if the LLM converts it to text. I will be using an LLM from grok and verify it using postman.",
+    "x_groq": {
+        "id": "req_01k7pjktdte6yazjvd78ng92qx"
+    }
+}

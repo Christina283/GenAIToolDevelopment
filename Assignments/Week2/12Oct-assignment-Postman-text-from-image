@@ -1,0 +1,54 @@
+{
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+   "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Extract text from the image."
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2025/OCTOBER/11/yk5DRNLR_af8afdb3fc434b7c86dd5e5b8f8390fe.jpg"
+                    }
+                }
+            ]
+        }
+    ]
+  }
+
+  -----
+  {
+    "id": "chatcmpl-10d94748-0b76-41e9-99f2-e316b025806f",
+    "object": "chat.completion",
+    "created": 1760627667,
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "The text in the image is:\n\nPOCKET FRIENDLY PRICES"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.079131438,
+        "prompt_tokens": 1035,
+        "prompt_time": 0.032140682,
+        "completion_tokens": 15,
+        "completion_time": 0.041127698,
+        "total_tokens": 1050,
+        "total_time": 0.07326838
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_79da0e0073",
+    "x_groq": {
+        "id": "req_01k7pscbs8ff883mejcxm70ptn"
+    },
+    "service_tier": "on_demand"
+}

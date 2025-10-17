@@ -1,0 +1,35 @@
+// Sample user story
+
+// Create a sample user story to create a button labelled 'Click here' which when clicked opens a pop-up with text ' You have clicked the button'
+// Generated story
+        Title: Display a pop-up message when the "Click here" button is clicked
+
+        As a user,
+        I want to click a button labeled "Click here"
+        So that a pop-up appears with the message "You have clicked the button"
+
+        Acceptance Criteria:
+        A button labeled "Click here" is displayed on the page.
+        When the user clicks the button, a pop-up (alert) appears.
+        The pop-up displays the exact text: "You have clicked the button".
+        The pop-up can be dismissed by the user.
+
+        Notes:
+
+        The pop-up can be implemented using a browser alert or a modal dialog.
+        The button should be visible and clickable on all standard screen sizes.
+
+Instructions
+    Generate 5 non functional test UI cases to verify the functionality
+    Ensure the test cases cover 3 positive and at least 1 negative scenario
+    Generate in the format - test case ID, test case name, test case description, test steps
+    [Do not] include any additional information or context
+
+Context
+    You are a QA engineer, tasked with validating user stories
+    A website has added a button to be clicked that will open a pop-up
+
+Persona
+    As a front end developer, I want to ensure that my code to open a pop up when a button is clicked works
+
+

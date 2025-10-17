@@ -1,0 +1,54 @@
+Request 
+--
+{
+  "model": "llama-3.3-70b-versatile",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Generate 5 non functional test cases to verify the functionality. Ensure the test cases cover 3 positive and at least 1 negative scenario. Generate in the format - test case ID, test case name, test case description, test steps.[Do not] include any additional information or context"
+    },
+    {
+      "role": "system",
+      "content": "Title: Display a pop-up message when the 'Click here' button is clicked As a user, I want to click a button labeled 'Click here' So that a pop-up appears with the message 'You have clicked the button'Acceptance Criteria: A button labeled 'Click here' is displayed on the page. When the user clicks the button, a pop-up (alert) appears. The pop-up displays the exact text: 'You have clicked the button'. The pop-up can be dismissed by the user. Notes: The pop-up can be implemented using a browser alert or a modal dialog.The button should be visible and clickable on all standard screen sizes."
+    },
+    {
+      "role": "assistant",
+      "content": "Generate only non functional test cases in the requested format"
+    }
+  ]
+}
+
+
+---- response
+{
+    "id": "chatcmpl-105829f9-3957-4dc4-aaac-c8fbe0b90e31",
+    "object": "chat.completion",
+    "created": 1760616944,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " is not possible as non functional test cases don't cover the functionality, however here are some test cases \n\nTC-001, Button Visibility Test, Verify that the button is visible and accessible on different screen sizes, \n1. Open the webpage on a desktop browser.\n2. Check if the button is visible and clickable.\n3. Open the webpage on a mobile browser.\n4. Check if the button is visible and clickable.\n5. Open the webpage on a tablet browser.\n6. Check if the button is visible and clickable.\n\nTC-002, Button Label Test, Verify that the button label is displayed correctly, \n1. Open the webpage on a desktop browser.\n2. Check if the button label is 'Click here'.\n3. Open the webpage on a mobile browser.\n4. Check if the button label is 'Click here'.\n5. Open the webpage on a tablet browser.\n6. Check if the button label is 'Click here'.\n\nTC-003, Pop-up Dismissal Test, Verify that the pop-up can be dismissed by the user, \n1. Open the webpage on a desktop browser.\n2. Click the 'Click here' button.\n3. Check if a pop-up appears with the message 'You have clicked the button'.\n4. Click the 'OK' button on the pop-up.\n5. Check if the pop-up is dismissed.\n\nTC-004, Error Handling Test, Verify that the application handles incorrect user input, \n1. Open the webpage on a desktop browser.\n2. Use the browser developer tools to simulate a JavaScript error.\n3. Click the 'Click here' button.\n4. Check if the application displays an error message.\n\nTC-005, Performance Test, Verify that the application responds quickly to user input, \n1. Open the webpage on a desktop browser.\n2. Click the 'Click here' button multiple times in quick succession.\n3. Check if the pop-up appears each time the button is clicked.\n4. Check if the application responds quickly to user input."
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.039878012,
+        "prompt_tokens": 235,
+        "prompt_time": 0.021253034,
+        "completion_tokens": 408,
+        "completion_time": 0.877503573,
+        "total_tokens": 643,
+        "total_time": 0.898756607
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_9e1e8f8435",
+    "x_groq": {
+        "id": "req_01k7pf542wefwvy1zpazrv48rp"
+    },
+    "service_tier": "on_demand"
+}

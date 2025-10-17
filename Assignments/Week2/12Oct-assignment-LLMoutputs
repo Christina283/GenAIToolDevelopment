@@ -1,0 +1,78 @@
+------------------------------------- ChatGPT ---------------------------------------------
+**Test Case 1**
+**Test Case ID:** NTF-001
+**Test Case Name:** Button Visibility on Page Load
+**Test Case Description:** Verify that the "Click here" button is visible and accessible when the page loads.
+**Test Steps:**
+
+1. Open the web page.
+2. Observe the page for the presence of a button labeled "Click here".
+3. Verify that the button is displayed without overlapping other elements.
+
+---
+
+**Test Case 2**
+**Test Case ID:** NTF-002
+**Test Case Name:** Pop-up Display on Button Click
+**Test Case Description:** Verify that clicking the "Click here" button displays a pop-up with the correct message.
+**Test Steps:**
+
+1. Open the web page.
+2. Click the "Click here" button.
+3. Verify that a pop-up appears.
+4. Verify that the pop-up text is exactly "You have clicked the button".
+
+---
+
+**Test Case 3**
+**Test Case ID:** NTF-003
+**Test Case Name:** Pop-up Dismissal
+**Test Case Description:** Verify that the user can dismiss the pop-up successfully.
+**Test Steps:**
+
+1. Click the "Click here" button to trigger the pop-up.
+2. Close the pop-up using the provided method (e.g., OK button).
+3. Verify that the pop-up disappears and the page is fully interactive.
+
+---
+
+**Test Case 4**
+**Test Case ID:** NTF-004
+**Test Case Name:** Button Click Functionality Across Screen Sizes
+**Test Case Description:** Verify that the "Click here" button works on different screen sizes.
+**Test Steps:**
+
+1. Open the web page on a desktop screen.
+2. Click the "Click here" button and verify the pop-up appears.
+3. Repeat steps 1-2 on a tablet screen size.
+4. Repeat steps 1-2 on a mobile screen size.
+
+---
+
+**Test Case 5**
+**Test Case ID:** NTF-005
+**Test Case Name:** No Pop-up on Non-button Area Click
+**Test Case Description:** Verify that clicking anywhere outside the "Click here" button does not trigger the pop-up.
+**Test Steps:**
+
+1. Open the web page.
+2. Click on a blank area or any element other than the "Click here" button.
+3. Verify that no pop-up is displayed.
+
+--------------------------------------------- Grok ----------------------------------------------
+| Test Case ID | Test Case Name | Test Case Description | Test Steps |
+|--------------|----------------|-----------------------|------------|
+| TC01 | Verify Button Responsiveness Across Screen Sizes | Ensure the "Click here" button is visible and clickable on various standard screen sizes. | 1. Open the application in a browser.<br>2. Verify the "Click here" button is visible.<br>3. Test on multiple screen resolutions (e.g., 1920x1080, 1366x768, 375x667).<br>4. Confirm the button is clickable and properly styled in each resolution. |
+| TC02 | Verify Pop-up Performance on Button Click | Ensure the pop-up appears promptly after clicking the "Click here" button. | 1. Open the application.<br>2. Click the "Click here" button.<br>3. Measure the time taken for the pop-up to appear.<br>4. Verify the pop-up displays within 1 second with the message "You have clicked the button". |
+| TC03 | Verify Pop-up Accessibility | Ensure the pop-up is accessible to users with assistive technologies. | 1. Open the application with a screen reader enabled (e.g., NVDA, VoiceOver).<br>2. Click the "Click here" button.<br>3. Verify the pop-up is announced by the screen reader with the correct message.<br>4. Confirm the pop-up can be dismissed using keyboard navigation. |
+| TC04 | Verify No Pop-up on Non-Button Interaction (Negative) | Ensure no pop-up appears when interacting with other page elements. | 1. Open the application.<br>2. Click on any area of the page outside the "Click here" button.<br>3. Verify no pop-up appears. |
+| TC05 | Verify System Stability with Multiple Button Clicks | Ensure the application remains stable when the button is clicked repeatedly. | 1. Open the application.<br>2. Click the "Click here" button 10 times in quick succession.<br>3. Verify the pop-up appears each time with the correct message.<br>4. Confirm the application does not crash or exhibit performance issues. |
+
+------------------------------------------ Gemini ------------------------------------------------
+| Test Case ID | Test Case Name | Test Case Description | Test Steps |
+| :--- | :--- | :--- | :--- |
+| **NFTC-001 (Positive)** | **Pop-up Response Time (Performance)** | Verify that the pop-up (alert or modal) appears without noticeable delay, ensuring a quick and smooth user experience upon clicking the button. | 1. Open the page in a standard browser. 2. Use a performance monitoring tool or simply observe the response time. 3. Click the **"Click here"** button once. 4. **Expected Result:** The pop-up appears instantaneously (e.g., within 500ms) after the click, with no visible lag. |
+| **NFTC-002 (Positive)** | **UI Responsiveness Across Devices (Usability)** | Verify that the **"Click here"** button remains correctly positioned, scaled, and fully clickable on different screen sizes and device orientations (desktop, tablet, mobile). | 1. Open the page on a desktop browser. 2. Resize the browser window from maximum width down to a mobile resolution (e.g., 320px). 3. Test on a mobile device/emulator and switch between portrait and landscape modes. 4. **Expected Result:** The button is visible, does not overlap other elements, and is fully functional (clickable) at all tested screen sizes and orientations. |
+| **NFTC-003 (Positive)** | **Keyboard Accessibility of Button (Accessibility)** | Verify that the **"Click here"** button can be successfully accessed and triggered using keyboard navigation alone, ensuring compliance with basic accessibility standards. | 1. Open the page and ensure the focus is not on the button. 2. Use the **Tab** key to navigate through interactive elements until the focus lands on the **"Click here"** button. 3. Press the **Enter** or **Space** key. 4. **Expected Result:** The pop-up with the message **"You have clicked the button"** appears immediately upon pressing Enter or Space. |
+| **NFTC-004 (Negative)** | **Simultaneous Button Clicks (Stress/Concurrency)** | Verify that rapidly clicking the **"Click here"** button multiple times (simultaneous clicks) does not crash the page or result in multiple overlapping pop-ups if using a browser `alert()`. | 1. Open the page. 2. Rapidly click the **"Click here"** button 5-10 times in quick succession. 3. **Expected Result (For Alert):** Only one browser alert is queued and displayed, or if using a modal, only a single modal appears/updates without generating script errors. The page remains responsive after dismissing the pop-up(s). |
+| **NFTC-005 (Non-Functional)** | **Font and Color Contrast (Usability/Accessibility)** | Verify that the text label **"Click here"** on the button has sufficient color contrast against its background and is clearly legible according to WCAG guidelines. | 1. Use a color contrast analyzer tool (e.g., browser developer tools color picker or online analyzer). 2. Inspect the **"Click here"** button and check the contrast ratio between the foreground text color and the button's background color. 3. **Expected Result:** The color contrast ratio meets or exceeds the minimum WCAG AA standard (typically 4.5:1). |

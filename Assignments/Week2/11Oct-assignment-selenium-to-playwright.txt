@@ -1,0 +1,147 @@
+Instructions
+    Write a Selenium Java test script to navigate to the ecommerce portal - Myntra and open the the page containing products for women
+    Write 2 test scripts one to verify successful navigation to the portal and another to verify navigation to the page with products for women
+    Use TestNG annotations and run the second test only if the first passes
+    Include code to capture screenshot in case of failure
+    Use commands from Selenium 4.29.0 version
+    Locate elements based on the DOM structure provided
+    <div class="container-container container-aspectContainer"><div class=" row-base" style="display: -webkit-flex;"><div class=" column-base" style="-webkit-box-flex: 1; flex: 1 1 0%;"><a href="https://www.myntra.com/shop/women"><div><picture draggable="false" class="img-responsive"><source srcset="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/OCTOBER/11/0eBLUDW2_3a1df837d6ec494cbc36242bdeded136.jpg" type="image/webp"><img draggable="false" class="image-image undefined image-hand" src="https://assets.myntassets.com/w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/OCTOBER/11/0eBLUDW2_3a1df837d6ec494cbc36242bdeded136.jpg" srcset=""></picture></div></a></div></div></div>
+    [IMPORTANT] The order of preference for locating elements is ID, Name, xpath axes
+    [DO NOT] use css to locate elements
+    [DO] import only essential pacakages used in the test
+    [CRITICAL] The code generated should [NOT HAVE] any comments or documentation
+
+Context
+    I am an SDET tasked with writing automation code in Selenium Java with best practices to ensure my application works correctly on Edge browser
+
+Examples
+    Here is an example which you can use to generate code - https://github.com/TestLeafInc/TestLeafSeleniumTraining
+
+Persona
+    Generate code as an SDET who works in Myntra and wants to make sure that the page with products for women in not broken.
+
+Tone
+    If the page with products for women is not available then business could be impacted, the organization will lose competivite advantage as it is Diwali season and I may lose credibility as an SDET if the unavailability of the page is not caught and reported
+
+-------
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.io.FileHandler;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+
+public class MyntraWomenProductsTest {
+
+    private WebDriver driver;
+
+    @BeforeMethod
+    public void setUp() {
+        driver = new EdgeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    @Test
+    public void verifyMyntraHomePageNavigation() {
+        driver.get("https://www.myntra.com");
+        String expectedUrl = "https://www.myntra.com/";
+        String actualUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl, "Myntra home page URL is not as expected, indicating navigation failure.");
+    }
+
+    @Test(dependsOnMethods = {"verifyMyntraHomePageNavigation"})
+    public void verifyWomenProductsPageNavigation() {
+        WebElement womenProductsLink = driver.findElement(By.xpath("//a[contains(@href, '/shop/women')]"));
+        womenProductsLink.click();
+        String expectedUrlPart = "/shop/women";
+        String actualUrl = driver.getCurrentUrl();
+        Assert.assertTrue(actualUrl.contains(expectedUrlPart), "Did not navigate to the expected women's products page. Current URL: " + actualUrl);
+    }
+
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()) {
+            try {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                File source = ts.getScreenshotAs(OutputType.FILE);
+                String screenshotName = result.getName() + "_" + System.currentTimeMillis() + ".png";
+                File destination = new File("screenshots" + File.separator + screenshotName);
+                FileHandler.copy(source, destination);
+                System.out.println("Screenshot captured for failed test: " + destination.getAbsolutePath());
+            } catch (IOException e) {
+                System.err.println("Exception while taking screenshot: " + e.getMessage());
+            }
+        }
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+
+-- Instructions
+    Convert the above Selenium Java test script to Playwright typescript test
+    Use the latest typescript syntax and ensure best practices and coding standards are followed
+    Generate typescript code that is compatible with Playwright version 1.37.0
+    The test cases should perform the same actions and verifications as in the Selenium Java code
+    Do not include additional test cases
+    If there is no corresponding code in Playwright for any Selenium command then do not include that code, instead add a comment "No corresponding code in PLaywright typescript"
+    Generate code only and do not include any comments
+    Use the same locators in typescript as in the Selenium Java code
+    Ensure the locators used are comaptible with Playwright
+    [IMPORTANT] IN case on multiple matches for element locators use first() method to select the first match
+Context
+    You are an AI agent that is trained to migrate code from one Selenium Java to Playwright typescript
+
+Persona
+    I am an SDET who needs to migrate code from Selenium Java to Playwright typescript accurately and ensure it is a working code
+
+-----
+import { test, expect, Page } from '@playwright/test';
+import fs from 'fs';
+import path from 'path';
+
+let page: Page;
+
+test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage();
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    // No corresponding code in Playwright typescript for implicit wait
+});
+
+test('verifyMyntraHomePageNavigation', async () => {
+    await page.goto('https://www.myntra.com');
+    const expectedUrl = 'https://www.myntra.com/';
+    const actualUrl = page.url();
+    expect(actualUrl).toBe(expectedUrl);
+});
+
+test('verifyWomenProductsPageNavigation', async () => {
+    await page.goto('https://www.myntra.com');
+    const womenProductsLink = page.locator("//a[contains(@href, '/shop/women')]").first();
+    await womenProductsLink.click();
+    const expectedUrlPart = '/shop/women';
+    const actualUrl = page.url();
+    expect(actualUrl).toContain(expectedUrlPart);
+});
+
+test.afterEach(async ({}, testInfo) => {
+    if (testInfo.status !== testInfo.expectedStatus) {
+        const screenshotPath = path.join('screenshots', `${testInfo.title}_${Date.now()}.png`);
+        await page.screenshot({ path: screenshotPath });
+        console.log('Screenshot captured for failed test:', screenshotPath);
+    }
+    if (page) {
+        await page.close();
+    }
+});
